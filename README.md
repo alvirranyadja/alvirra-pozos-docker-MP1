@@ -40,7 +40,7 @@ curl -u toto:python -X GET http://localhost:5000/pozos/api/v1.0/get_student_ages
 
 **Résultat obtenu :
 
-![Test API - réponse JSON](screenshots/01-test-api-curl.png)
+![Test API - réponse JSON](screen/01-test-api-curl.png)
 
 ## 2. Déploiement avec docker-compose (Infrastructure as Code)
 
@@ -65,13 +65,13 @@ docker ps
 
 Conteneurs actifs après déploiement :
 
-![docker compose up et docker ps](screenshots/02b-docker-compose-ps.png)
+![docker compose up et docker ps](screen/02b-docker-compose-ps.png)
 
 Accès au site (`http://<IP_VM>:8080`) puis clic sur List Student :
 
 Résultat obtenu :
 
-![Site web - liste des élèves](screenshots/02-website-liste-eleves.png)
+![Site web - liste des élèves](screen/02-website-liste-eleves.png)
 
 ## 3. Registre Docker privé
 
@@ -97,7 +97,7 @@ docker push localhost:5001/pozos/student-api:1.0
 
 Résultat obtenu :
 
-![Registre privé - image poussée](screenshots/03-registre-image.png)
+![Registre privé - image poussée](screen/03-registre-image.png)
 
 ## 4. Écarts par rapport aux consignes de base (justifications)
 
@@ -118,7 +118,7 @@ justification. Voici les ajustements techniques effectués :
   un reverse proxy, ce qui provoquait une erreur de contenu mixte
   (navigateur bloquant un appel HTTP direct depuis une page HTTPS) :
 
-  ![Erreur Mixed Content rencontrée](screenshots/03-registre-erreur-mixed-content.png)
+  ![Erreur Mixed Content rencontrée](screen/03-registre-erreur-mixed-content.png)
 
   La variable `NGINX_PROXY_PASS_URL`, combinée à un réseau Docker dédié
   (`registry_net`), fait transiter l'appel entre les deux conteneurs par leur
