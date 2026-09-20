@@ -133,7 +133,7 @@ justification. Voici les ajustements techniques effectués :
 .
 ├── README.md
 ├── docker-compose.yml
-├── screenshots/
+├── screen/
 │   ├── 01-test-api-curl.png
 │   ├── 02-website-liste-eleves.png
 │   ├── 02b-docker-compose-ps.png
