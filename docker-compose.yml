@@ -1,0 +1,38 @@
+services:
+
+  # API REST Flask (student_list)
+  api:
+    build:
+      context: ./simple_api
+    image: pozos/student-api:1.0
+    container_name: pozos_api
+    volumes:
+      # Monte le fichier JSON de données dans le conteneur
+      - ./simple_api/student_age.json:/data/student_age.json
+    ports:
+      - "5000:5000"
+    networks:
+      - pozos_net
+    restart: unless-stopped
+
+  # Site web PHP consommant l'API
+  website:
+    image: php:apache
+    container_name: pozos_website
+    environment:
+      - USERNAME=toto
+      - PASSWORD=python
+    volumes:
+      # Remplace le site par défaut de l'image par le site fourni par POZOS
+      - ./website:/var/www/html
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+    networks:
+      - pozos_net
+    restart: unless-stopped
+
+networks:
+  pozos_net:
+    driver: bridge
